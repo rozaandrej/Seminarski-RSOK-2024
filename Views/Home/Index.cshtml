@@ -1,0 +1,36 @@
+﻿@model IEnumerable<tfzr_rsok_autosalon.Viewmodels.CarsViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (Model != null)
+{
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">@Model.Count() auta@(Model.Count() == 1 ? "" : "") na prodaju.</h1>
+            <p class="lead">Najbolja kupovina, kvalitet pre svega.</p>
+        </div>
+    </div>
+    @foreach (var car in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">@car.Model.CarModels.Name</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@car.Model.Manufacturers.Name</h6>
+                <p class="card-text">@car.Model.HorsePower KS @car.Model.NumberOfDoors vrata @car.Model.Torque Nm</p>
+                <p class="card-text">@car.Model.Description</p>
+                <a class="card-link" asp-controller="Cars" asp-action="Details" asp-route-id="@car.Model.Id">Prikazi vise</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Sorry...</h1>
+            <p class="lead">Something went wrong..</p>
+        </div>
+    </div>
+}

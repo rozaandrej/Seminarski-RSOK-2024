@@ -1,0 +1,43 @@
+﻿@model tfzr_rsok_autosalon.Models.Cars
+@inject tfzr_rsok_autosalon.Services.IServices.ICarsService _carsService
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Dodavanje novog vozila</h2>
+<form asp-controller="Cars" asp-action="Add" method="post" enctype="multipart/form-data">
+    <label asp-for="Manufacturers">Proizvodjac</label>
+    <br />
+    <select class="form-select" asp-for="ManufacturersId" asp-items="@_carsService.GetManufacturersForDropDown()"></select>
+    <br />
+    <label asp-for="Categorizes">Kategorija</label>
+    <br />
+    <select class="form-select" asp-for="CategoryId" asp-items="@_carsService.GetCategoryForDropDown()"></select>
+    <br />
+    <label asp-for="CarModels">Model</label>
+    <br />
+    <select class="form-select" asp-for="CarModelId" asp-items="@_carsService.GetModelsForDropDown()"></select>
+    <br />
+    <label asp-for="Description">Opis</label>
+    <br />
+    <input class="form-control" asp-for="Description" />
+    <br />
+    <label asp-for="HorsePower">Konjaza</label>
+    <br />
+    <input class="form-control" asp-for="HorsePower" />
+    <br />
+    <label asp-for="Torque">Obrtni moment</label>
+    <br />
+    <input class="form-control" asp-for="Torque" />
+    <br />
+    <label asp-for="NumberOfDoors">Broj vrata</label>
+    <br />
+    <input class="form-control" asp-for="NumberOfDoors" />
+    <br />
+    <br />
+
+
+
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>

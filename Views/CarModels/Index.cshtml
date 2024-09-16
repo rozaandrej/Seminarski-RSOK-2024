@@ -1,0 +1,44 @@
+﻿@model IEnumerable<tfzr_rsok_autosalon.Viewmodels.CarModelsViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>MODELI</h1>
+
+<p>
+    <a asp-action="Create" type="button" class="btn btn-primary">Dodaj</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Ime</th>
+        <th>Proizvodjac</th>
+        <th>Kategorija</th>
+        <th>Opcije</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Model.Name
+            </td>
+
+            <td>
+                @item.Model.Manufacturer.Name
+            </td>
+
+            <td>
+                @item.Model.Category.Name
+            </td>
+
+            <td>
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.Model.Id }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Obrisi", "Delete", new { id = item.Model.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

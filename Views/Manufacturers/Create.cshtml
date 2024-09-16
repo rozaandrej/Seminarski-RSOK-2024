@@ -1,0 +1,18 @@
+﻿@model tfzr_rsok_autosalon.Models.Manufacturers
+@inject tfzr_rsok_autosalon.Services.IServices.IManufacturersService _manufacturersService
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Dodaj novog proizvodjaca</h2>
+<form asp-controller="Manufacturers" asp-action="Add" method="post" enctype="multipart/form-data">
+    <label asp-for="Name">Ime</label>
+    <br/>
+    <input class="form-control" asp-for="Name" />
+
+
+    <br/>
+    <br/>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>

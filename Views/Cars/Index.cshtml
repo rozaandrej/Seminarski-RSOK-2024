@@ -1,0 +1,61 @@
+﻿@model IEnumerable<tfzr_rsok_autosalon.Viewmodels.CarsViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>VOZILA</h1>
+
+<p>
+    <a asp-action="Create" type="button" class="btn btn-primary">Dodaj</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Proizvodjac</th>
+        <th>Kategorija</th>
+        <th>Model</th>
+        <th>Konjaza</th>
+        <th>Obrtni moment</th>
+        <th>Broj vrata</th>
+        <th>Opis</th>
+        <th>Opcije</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Model.Manufacturers.Name
+            </td>
+
+            <td>
+                @item.Model.Categorizes.Name
+            </td>
+
+            <td>
+                @item.Model.CarModels.Name
+            </td>
+
+            <td>
+                @item.Model.HorsePower <span>KS</span>
+            </td>
+            <td>
+                @item.Model.Torque <span>Nm</span>
+            </td>
+            <td>
+                @item.Model.NumberOfDoors <span>vrata</span>
+            </td>
+            <td>
+                @item.Model.Description
+            </td>
+            <td>
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.Model.Id }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Detaljno", "Details", new { id = item.Model.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Obrisi", "Delete", new { id = item.Model.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

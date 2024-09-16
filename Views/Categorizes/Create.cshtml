@@ -1,0 +1,16 @@
+﻿@model tfzr_rsok_autosalon.Models.Categorizes
+@inject tfzr_rsok_autosalon.Services.IServices.ICategorizesService _categorizesService
+
+@{
+    Layout = "_Layout";
+}
+
+<h2>Kreiranje kategorije</h2>
+<form class="form" asp-controller="Categorizes" asp-action="Add" method="post" enctype="multipart/form-data">
+    <label asp-for="Name">Ime</label>
+    <input class="form-control form-text" asp-for="Name" />
+
+
+    <br/>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>

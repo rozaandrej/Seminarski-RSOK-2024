@@ -1,0 +1,39 @@
+﻿@model IEnumerable<tfzr_rsok_autosalon.Viewmodels.OrdersViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Narudzbine</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Model</th>
+        <th>Proizvodjac</th>
+        <th>Datum</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Model.Car.CarModels.Name
+            </td>
+            <td>
+                @item.Model.Car.Manufacturers.Name
+            </td>
+            <td>@item.Model.DateOfPurchase.Date</td>
+            <td>
+                @Html.ActionLink("Izbrisi", "Delete", new { id = item.Model.Id }, new { @class = "btn btn-danger" })
+                @(item.Model.Status == 0 ? 
+                    Html.ActionLink("Prihvati", "Accept", new {id = @item.Model.Id}, new {@class="btn btn-success"})
+                        :
+                    Html.ActionLink("Odbij", "Decline", new {id = @item.Model.Id}, new {@class="btn btn-warning"})
+                    )
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
